@@ -11,6 +11,10 @@
 		DF8584D31B507AA100266FAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8584D21B507AA100266FAB /* Images.xcassets */; };
 		DF8584D61B507AA100266FAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8584D41B507AA100266FAB /* LaunchScreen.xib */; };
 		DF8584E21B507AA100266FAB /* TipCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584E11B507AA100266FAB /* TipCalTests.swift */; };
+		DF8584ED1B507B9400266FAB /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF8584EC1B507B9400266FAB /* Storyboard.storyboard */; };
+		DF8584F01B5191A700266FAB /* TipCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584EF1B5191A700266FAB /* TipCalViewController.swift */; };
+		DF8584F21B5196B700266FAB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F11B5196B700266FAB /* Utils.swift */; };
+		DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F41B51A1FB00266FAB /* UIKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,10 @@
 		DF8584DB1B507AA100266FAB /* TipCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8584E01B507AA100266FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF8584E11B507AA100266FAB /* TipCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalTests.swift; sourceTree = "<group>"; };
+		DF8584EC1B507B9400266FAB /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		DF8584EF1B5191A700266FAB /* TipCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalViewController.swift; sourceTree = "<group>"; };
+		DF8584F11B5196B700266FAB /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		DF8584F41B51A1FB00266FAB /* UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +81,14 @@
 		DF8584C81B507AA100266FAB /* TipCal */ = {
 			isa = PBXGroup;
 			children = (
+				DF8584EE1B51919100266FAB /* Controllers */,
+				DF8584EB1B507B8500266FAB /* Views */,
 				DF8584CB1B507AA100266FAB /* AppDelegate.swift */,
 				DF8584D21B507AA100266FAB /* Images.xcassets */,
 				DF8584D41B507AA100266FAB /* LaunchScreen.xib */,
 				DF8584C91B507AA100266FAB /* Supporting Files */,
+				DF8584F11B5196B700266FAB /* Utils.swift */,
+				DF8584F41B51A1FB00266FAB /* UIKit.swift */,
 			);
 			path = TipCal;
 			sourceTree = "<group>";
@@ -104,6 +116,22 @@
 				DF8584E01B507AA100266FAB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF8584EB1B507B8500266FAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF8584EC1B507B9400266FAB /* Storyboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF8584EE1B51919100266FAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF8584EF1B5191A700266FAB /* TipCalViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +216,7 @@
 			files = (
 				DF8584D61B507AA100266FAB /* LaunchScreen.xib in Resources */,
 				DF8584D31B507AA100266FAB /* Images.xcassets in Resources */,
+				DF8584ED1B507B9400266FAB /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */,
 				DF8584CC1B507AA100266FAB /* AppDelegate.swift in Sources */,
+				DF8584F01B5191A700266FAB /* TipCalViewController.swift in Sources */,
+				DF8584F21B5196B700266FAB /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
