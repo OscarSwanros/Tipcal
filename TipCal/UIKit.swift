@@ -16,6 +16,26 @@ func configureUI() {
     ]
 }
 
+class PTNetworkActivityIndicator {
+    static var count: Int = 0
+    
+    class func showNetworkActivityIndicator() {
+        count++
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    class func hideNetworkActivityIndicator() {
+        if count > 0 {
+            count--
+        }
+        
+        if count == 0 {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        }
+    }
+}
+
 extension UIColor {
     convenience init(hex: String) {
         var red:   CGFloat = 0.0

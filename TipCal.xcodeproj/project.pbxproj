@@ -15,6 +15,8 @@
 		DF8584F01B5191A700266FAB /* TipCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584EF1B5191A700266FAB /* TipCalViewController.swift */; };
 		DF8584F21B5196B700266FAB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F11B5196B700266FAB /* Utils.swift */; };
 		DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F41B51A1FB00266FAB /* UIKit.swift */; };
+		DF8584F71B52FBCD00266FAB /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F61B52FBCD00266FAB /* ApiManager.swift */; };
+		DF8584F91B52FFF700266FAB /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F81B52FFF700266FAB /* Foundation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		DF8584EF1B5191A700266FAB /* TipCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalViewController.swift; sourceTree = "<group>"; };
 		DF8584F11B5196B700266FAB /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		DF8584F41B51A1FB00266FAB /* UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
+		DF8584F61B52FBCD00266FAB /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		DF8584F81B52FFF700266FAB /* Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 				DF8584C91B507AA100266FAB /* Supporting Files */,
 				DF8584F11B5196B700266FAB /* Utils.swift */,
 				DF8584F41B51A1FB00266FAB /* UIKit.swift */,
+				DF8584F61B52FBCD00266FAB /* ApiManager.swift */,
+				DF8584F81B52FFF700266FAB /* Foundation.swift */,
 			);
 			path = TipCal;
 			sourceTree = "<group>";
@@ -234,8 +240,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8584F91B52FFF700266FAB /* Foundation.swift in Sources */,
 				DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */,
 				DF8584CC1B507AA100266FAB /* AppDelegate.swift in Sources */,
+				DF8584F71B52FBCD00266FAB /* ApiManager.swift in Sources */,
 				DF8584F01B5191A700266FAB /* TipCalViewController.swift in Sources */,
 				DF8584F21B5196B700266FAB /* Utils.swift in Sources */,
 			);

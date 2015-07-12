@@ -15,6 +15,7 @@ class TipCalViewController: UIViewController {
     @IBOutlet weak var tipPercentageTextField: UITextField!
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var currencyToggleButton: UIBarButtonItem!
     
     var numberOfPeople: Int? {
         didSet {
@@ -47,17 +48,38 @@ class TipCalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var currency = user_defaults_get_string("Currency")
+        if currency.isEmpty {
+            currency = "USD"
+            user_defaults_set_string(currency, "Currency")
+        }
+        
+        self.currencyToggleButton.title = currency == "USD" ? "To MXN" : "To USD"
     }
     
     @IBAction func calculateButtonPressed(sender: AnyObject) {
-        self.numberOfPeopleTextField.resignFirstResponder()
-        self.tipPercentageTextField.resignFirstResponder()
-        self.checkTotalTextField.resignFirstResponder()
-        
+        hideKeyboard(sender)
         let total = (checkTotal! * (1+(tip! / 100))) / Float(numberOfPeople!)
         
         self.resultLabel.text = "$\(total)"
         
+    }
+    
+    @IBAction func toggleCurrency(sender: AnyObject) {
+        let total = stringToNumber((self.resultLabel.text! as NSString).stringByReplacingOccurrencesOfString("$", withString: ""))!.floatValue
+        let exchangeRate = user_defaults_get_float("CurrentRate")
+        let currency = user_defaults_get_string("Currency")
+        
+        if currency == "USD" {
+            user_defaults_set_string("MXN", "Currency")
+            self.currencyToggleButton.title = "To USD"
+            self.resultLabel.text = "$\(total * exchangeRate)"
+        } else {
+            user_defaults_set_string("USD", "Currency")
+            self.currencyToggleButton.title = "To MXN"
+            self.resultLabel.text = "$\(total / exchangeRate)"
+        }
     }
 }
 
@@ -90,6 +112,12 @@ extension TipCalViewController: UITextFieldDelegate {
 // MARK: - Misc
 
 extension TipCalViewController {
+
+    @IBAction func hideKeyboard(sender: AnyObject) {
+        self.numberOfPeopleTextField.resignFirstResponder()
+        self.tipPercentageTextField.resignFirstResponder()
+        self.checkTotalTextField.resignFirstResponder()
+    }
     
     func setCalculateButtonEnabled() {
         self.calculateButton.backgroundColor = UIColor.pt_greenColor()
