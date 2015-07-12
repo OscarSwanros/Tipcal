@@ -10,6 +10,7 @@ import Foundation
 
 let api_base = "https://currency-exchange.p.mashape.com"
 let api_key  = "8PVaHmcUtSmshRIjf7PRhBqctb7sp1rp65XjsnbHalE5NLfZhA"
+let kCurrencyExchangeUpdatedNotificationName = "kCurrencyExchangeUpdatedNotification"
 
 let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
@@ -33,7 +34,11 @@ func updateCurrencyExchangeRate() {
         let info = NSString(data: data, encoding: NSUTF8StringEncoding)?.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
         if let ce = info,
            let value = stringToNumber(ce) {
-            user_defaults_set_float(value.floatValue, "CurrentRate")
+            setCurrentExchangeRate(value.floatValue)
+            
+            executeOnMainThread({
+                NSNotificationCenter.defaultCenter().postNotificationName(kCurrencyExchangeUpdatedNotificationName, object: nil)
+            })
         }
     })
     

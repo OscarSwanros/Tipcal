@@ -17,6 +17,7 @@
 		DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F41B51A1FB00266FAB /* UIKit.swift */; };
 		DF8584F71B52FBCD00266FAB /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F61B52FBCD00266FAB /* ApiManager.swift */; };
 		DF8584F91B52FFF700266FAB /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584F81B52FFF700266FAB /* Foundation.swift */; };
+		DF8584FB1B53299F00266FAB /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8584FA1B53299F00266FAB /* CurrencyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		DF8584F41B51A1FB00266FAB /* UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		DF8584F61B52FBCD00266FAB /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		DF8584F81B52FFF700266FAB /* Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
+		DF8584FA1B53299F00266FAB /* CurrencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				DF8584F41B51A1FB00266FAB /* UIKit.swift */,
 				DF8584F61B52FBCD00266FAB /* ApiManager.swift */,
 				DF8584F81B52FFF700266FAB /* Foundation.swift */,
+				DF8584FA1B53299F00266FAB /* CurrencyManager.swift */,
 			);
 			path = TipCal;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				DF8584F91B52FFF700266FAB /* Foundation.swift in Sources */,
 				DF8584F51B51A1FB00266FAB /* UIKit.swift in Sources */,
+				DF8584FB1B53299F00266FAB /* CurrencyManager.swift in Sources */,
 				DF8584CC1B507AA100266FAB /* AppDelegate.swift in Sources */,
 				DF8584F71B52FBCD00266FAB /* ApiManager.swift in Sources */,
 				DF8584F01B5191A700266FAB /* TipCalViewController.swift in Sources */,

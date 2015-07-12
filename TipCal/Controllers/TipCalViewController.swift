@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TipCalViewController: UIViewController {
     
     @IBOutlet weak var numberOfPeopleTextField: UITextField!
@@ -16,6 +17,7 @@ class TipCalViewController: UIViewController {
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var currencyToggleButton: UIBarButtonItem!
+    @IBOutlet weak var currentRateInfoLabel: UILabel!
     
     var numberOfPeople: Int? {
         didSet {
@@ -49,13 +51,17 @@ class TipCalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var currency = user_defaults_get_string("Currency")
-        if currency.isEmpty {
-            currency = "USD"
-            user_defaults_set_string(currency, "Currency")
+        var currency = currentCurrency
+        if currency  == nil {
+            currency = .USD
+            setCurrentCurrency(currency!)
         }
         
-        self.currencyToggleButton.title = currency == "USD" ? "To MXN" : "To USD"
+        self.currencyToggleButton.title = currency == .USD ? Currency.MXN.titleString() : Currency.USD.titleString()
+        
+        updateCurrentRateInfoLabel()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateCurrentRateInfoLabel", name: kCurrencyExchangeUpdatedNotificationName, object: nil)
     }
     
     @IBAction func calculateButtonPressed(sender: AnyObject) {
@@ -63,22 +69,22 @@ class TipCalViewController: UIViewController {
         let total = (checkTotal! * (1+(tip! / 100))) / Float(numberOfPeople!)
         
         self.resultLabel.text = "$\(total)"
-        
     }
     
     @IBAction func toggleCurrency(sender: AnyObject) {
         let total = stringToNumber((self.resultLabel.text! as NSString).stringByReplacingOccurrencesOfString("$", withString: ""))!.floatValue
-        let exchangeRate = user_defaults_get_float("CurrentRate")
-        let currency = user_defaults_get_string("Currency")
-        
-        if currency == "USD" {
-            user_defaults_set_string("MXN", "Currency")
-            self.currencyToggleButton.title = "To USD"
-            self.resultLabel.text = "$\(total * exchangeRate)"
-        } else {
-            user_defaults_set_string("USD", "Currency")
-            self.currencyToggleButton.title = "To MXN"
-            self.resultLabel.text = "$\(total / exchangeRate)"
+        let currency = currentCurrency!
+        switch currency {
+        case .USD:
+            user_defaults_set_string(Currency.MXN.rawValue, currency_key)
+            self.currencyToggleButton.title = Currency.USD.titleString()
+            self.resultLabel.text = "$\(fromUSDToMXN(total))"
+            
+        case .MXN:
+            user_defaults_set_string(Currency.USD.rawValue, currency_key)
+            self.currencyToggleButton.title = Currency.MXN.titleString()
+            self.resultLabel.text = "$\(fromMXNToUSD(total))"
+            
         }
     }
 }
@@ -86,7 +92,6 @@ class TipCalViewController: UIViewController {
 extension TipCalViewController: UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        textField.layoutIfNeeded()
         
         let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         switch textField.tag {
@@ -127,5 +132,9 @@ extension TipCalViewController {
     func setCalculateButtonDisabled() {
         self.calculateButton.backgroundColor = UIColor.pt_redColor()
         self.calculateButton.enabled = false
+    }
+    
+    func updateCurrentRateInfoLabel() {
+        self.currentRateInfoLabel.text = "$1 USD = $\(currentExchangeRate()) MXN"
     }
 }

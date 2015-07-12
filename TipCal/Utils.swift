@@ -17,6 +17,16 @@ func stringToNumber(s: String) -> NSNumber? {
     return numberFormatter.numberFromString(s)
 }
 
+func executeOnMainThread(handler: (Void -> Void)?) {
+    if let block = handler {
+        if NSThread.isMainThread() {
+            block()
+        } else {
+            dispatch_sync(dispatch_get_main_queue(), block)
+        }
+    }
+}
+
 func user_defaults_set_float(value: Float, key: String) {
     userDefaults.setFloat(value, forKey: key)
     userDefaults.synchronize()
