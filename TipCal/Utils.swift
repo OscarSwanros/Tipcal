@@ -57,3 +57,16 @@ func user_defaults_get_string(key: String) -> String {
     
     return ""
 }
+
+func user_defaults_get_object(key: String) -> AnyObject? {
+    if let o: AnyObject = userDefaults.objectForKey(key) {
+        return o
+    }
+    
+    return nil
+}
+
+func user_defaults_set_object(o: AnyObject, key: String) {
+    userDefaults.setObject(o, forKey: key)
+    userDefaults.synchronize()
+}

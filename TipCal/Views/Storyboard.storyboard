@@ -202,6 +202,11 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="D7w-nz-LcL">
+                        <barButtonItem key="leftBarButtonItem" title="Show last" id="nvr-zs-inL">
+                            <connections>
+                                <action selector="showLastButtonTapped:" destination="0Fr-Ig-ill" id="e9g-Pe-xMB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="l20-Sg-Lh2">
                             <connections>
                                 <action selector="toggleCurrency:" destination="0Fr-Ig-ill" id="ePd-wS-bNN"/>

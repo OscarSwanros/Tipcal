@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class TipCalViewController: UIViewController {
     
     @IBOutlet weak var numberOfPeopleTextField: UITextField!
@@ -69,6 +68,9 @@ class TipCalViewController: UIViewController {
         let total = (checkTotal! * (1+(tip! / 100))) / Float(numberOfPeople!)
         
         self.resultLabel.text = "$\(total)"
+        
+        let r = Result(amout: total, currency: currentCurrency!, date: NSDate())
+        saveResult(r)
     }
     
     @IBAction func toggleCurrency(sender: AnyObject) {
@@ -87,12 +89,24 @@ class TipCalViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func showLastButtonTapped(sender: AnyObject) {
+        if let r = lastResult {
+            let alertController = UIAlertController(title: "Last Result", message: "Amount: \(r.amount!)\nCurrency: \(r.currency!.rawValue)", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "No saved results", message: "You have no saved results", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension TipCalViewController: UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
         let text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
         switch textField.tag {
         case 1:
